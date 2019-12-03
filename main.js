@@ -111,12 +111,12 @@ const priority1Only = function(todos) {
 
 }
 
-const notCompleteFirst = function() {
-  
+const notCompleteFirst = function(todos) {
+  return twoPileSort(todos, (arr)=> arr.complete === false)
 }
 
-const priority2First = function() {
-  
+const priority2First = function(todos) {
+  return twoPileSort(todos, (arr)=> arr.priority === 2) 
 }
 
 
