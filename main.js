@@ -20,6 +20,8 @@ const map = function(arr , func) {
   return newArr;
 }
 
+// const map = (arr,func) => arr.map(func)
+
 const filter = function(arr,func) {
   const newArr = [];
   arr.forEach(function(arr){
@@ -29,6 +31,8 @@ const filter = function(arr,func) {
   })
   return newArr;
 }
+
+// const filter = (arr,func) => arr.filter(func)
 
 const twoPileSort = function(arr,func) {
   const pass = []
@@ -85,39 +89,28 @@ const isHighPriority = function(todo) {
  * ITERATION FUNCTIONS *
  ***********************/
 
-const names = function(todos) {
-return map(todos,getTodoName)
-}
+const names = (todos) => todos.map((todo)=> todo.text)
 
-const namesAndPriorities = function(todos) {
-  return map(todos,getTodoAndPriorityName)
-}
+const namesAndPriorities = (todos) => todos.map((todo)=> todo.priority === 1 ? todo.text + ' - Low' : todo.text + ' - High')
 
-const justNotComplete = function(todos) {
-  return filter(todos, (arr)=> arr.complete === false)
-}
 
-const justComplete = function(todos) {
-  return filter(todos,isComplete)
-}
+const justNotComplete = (todos) => todos.filter((todo)=> todo.complete === false)
 
-const priority2Only = function(todos) {
-  return filter(todos,isHighPriority)
+const justComplete = (todos) => todos.filter((todo)=> todo.complete)
 
-}
 
-const priority1Only = function(todos) {
-  return filter(todos, (arr)=> arr.priority === 1)
+const priority2Only = (todos) => todos.filter((todo)=> todo.priority === 2)
 
-}
 
-const notCompleteFirst = function(todos) {
-  return twoPileSort(todos, (arr)=> arr.complete === false)
-}
 
-const priority2First = function(todos) {
-  return twoPileSort(todos, (arr)=> arr.priority === 2) 
-}
+const priority1Only = (todos) => todos.filter((todo)=> todo.priority === 1)
+
+
+const notCompleteFirst = (todos) => twoPileSort(todos,(todo) => todo.complete === false)
+
+
+const priority2First = (todos) => twoPileSort(todos,(todo) => todo.priority===2)
+
 
 
 
